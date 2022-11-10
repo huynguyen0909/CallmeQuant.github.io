@@ -69,7 +69,7 @@ plugins:
   - jekyll-seo-tag
 
 author:
-  name: "Jake Tae"
+  name: "Binh Ho"
   avatar: "/assets/images/Avatar Updated.jpg"
   bio: "An endeavoring applied statistician and data scientist."
   location: "Ho Chi Minh city, VN"
