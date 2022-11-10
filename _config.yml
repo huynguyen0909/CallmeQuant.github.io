@@ -13,20 +13,29 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: MM
-email:
+remote_theme: "mmistakes/minimal-mistakes@4.19.3"
+
+minimal_mistakes_skin: "default"
+minimal_mistakes_skin2: "dark"
+
+title: "Binh Ho"
+subtitle: ""
+personal email: binhho660@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-twitter_username: username
-github_username: username
-minimal_mistakes_skin: default
+  Hey there! My name is Binh, and I'm an undergraduate at Internation University under VietNam National University.
+words_per_minute: 200
 search: true
+search_full_content: true
+
+# twitter_username: username
+github_username: CallmeQuant
 
 # Build settings
 markdown: kramdown
-remote_theme: mmistakes/minimal-mistakes
+highlighter: rouge
+kramdown:
+  html_to_native: true
+
 # Outputting
 permalink: /:categories/:title/
 paginate: 5 # amount of posts to show
@@ -35,6 +44,7 @@ timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 include:
   - _pages
+  - _portfolio
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -56,36 +66,41 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-seo-tag
 
 author:
-  name   : "First Lastname"
-  avatar : "/assets/images/bio-photo.jpg"
-  bio    : "My awesome biography constrained to a sentence or two goes here."
+  name: "Jake Tae"
+  avatar: "/assets/images/Avatar Updated.jpg"
+  bio: "An endeavoring applied statistician and data scientist."
+  location: "Ho Chi Minh city, VN"
   links:
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      url: "https://"
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:binhho660@gmail.com"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/CallmeQuant"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/bình-hồ-899390193/"
+    - label: "R pubs"
+      icon: "fab fa-fw fa-twitter"
+      url: "https://rpubs.com/binhho660"
 
 footer:
   links:
-    - label: "Twitter"
-      icon: "fab fa-fw fa-twitter-square"
-      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/"
+      url: "https://github.com/CallmeQuant"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/jaketae/"
+
+# Collections
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # _posts
@@ -94,18 +109,27 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
       share: true
       related: true
-  # _pages
-  - scope:
-      path: "_pages"
-      type: pages
-    values:
-      layout: single
-      author_profile: true
+  # - scope:
+  #     path: ""
+  #     type: portfolio
+  #   values:
+  #     layout: single
+  #     author_profile: true
+  #     share: true
+  #     related: true
+
+# SEO related
+# analytics:
+#   provider: "google-gtag"
+#   google:
+#     tracking_id: "UA-154432000-1"
+#     anonymize_ip: false # default
+# google_site_verification: google9c27511a2a69fff6.html
 
 category_archive:
   type: liquid
@@ -113,3 +137,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
