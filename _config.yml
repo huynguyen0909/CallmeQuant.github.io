@@ -84,7 +84,7 @@ author:
       icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/in/bình-hồ-899390193/"
     - label: "R pubs"
-      icon: "fab fa-solid fa-registered"
+      icon: "fab fa-r-project"
       url: "https://rpubs.com/binhho660"
 
 footer:
