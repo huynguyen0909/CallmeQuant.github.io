@@ -59,8 +59,8 @@ where
 
 $$
 \begin{aligned}
-\mathcal{L}(q) & = \int q(Z) \operatorname{ln} \Bigg\{ \frac{p(X, Z)}{q(Z)} \Bigg\} dZ \\
-\operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln} \Bigg\{ \frac{p(Z \mid X)}{q(Z)} \Bigg\} dZ
+\mathcal{L}(q) & = \int q(Z) \operatorname{ln} \Bigg\\{ \frac{p(X, Z)}{q(Z)} \Bigg\\} dZ \\
+\operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln} \Bigg\\{ \frac{p(Z \mid X)}{q(Z)} \Bigg\\} dZ
 \end{aligned}
 $$
 
