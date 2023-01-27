@@ -18,9 +18,9 @@ While there are other prominent methods such as Markov chain Monte Carlo (MCMC) 
 
 To advocate the strength of Variational Inference (VI), consider the problem of computing posterior distribution in Bayesian frameworks. Recall Bayes' Theorem: 
 
-\begin{equation}
+$$
 p(Z \mid X ) = \frac{p(X, Z)}{\int_{Z}p(X, Z) \, dZ}
-\end{equation}
+$$
 where $Z$ is a latent variable that supports the government of the distribution of the data. $P(X, Z)$ is the joint density of latent variables $Z$ and the observations $X$. Normally, inference in a Bayesian model is equivalent to computing the posterior distribution $P(Z \mid X)$ and needs approximate inference (since the denominator is usually multidimensional and intractable. That is, such integrals are usually intractable in the sense that 
 + We do not have an analytic expression to evaluate explicitly those integrals. 
 + The computational costs are so prohibitive that we can't carry out (or fast computation is of primary interest).
@@ -55,10 +55,12 @@ $$\operatorname{ln}p(X) = \mathcal{L}(q) + \operatorname{KL}(q || p) \tag{1}$$
 
 where 
 
-\begin{align*}
+$$
+\begin{aligned}
 \mathcal{L}(q) & = \int q(Z) \operatorname{ln}\left\{ \frac{p(X, Z)}{q(Z)} \right\} dZ \\
 \operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln}\left\{ \frac{p(Z \mid X)}{q(Z)} \right\} dZ
-\end{align*}
+\end{aligned}
+$$
 
 The above relation could be easily verified by first making use of the product rule upon the joint distribution of $X$ and $Z$
 
@@ -69,11 +71,13 @@ which we then substitute into the expression for $\mathcal{L}(q)$ to give rise t
 ## **First Derivation: KL Divergence**
 Using the definition of Kullback-Leibler divergence, we can easily derive the equation 1:
 
-\begin{align*}
+$$
+\begin{aligned}
   \operatorname{KL}[q(Z) || p(Z \mid X) & = \int_{q} q(Z) \operatorname{log}\frac{q(Z)}{p(Z \mid X)} \\
   & = \mathbb{E}_{q(Z)} \Bigg[\operatorname{log}\frac{q(Z)}{p(Z \mid X)} \Bigg] \tag{2} \\
   & = \underbrace{\mathbb{E}_{q(Z)}[\operatorname{log}q(Z)] - \mathbb{E}_{q(Z)}[\operatorname{log}p(Z, X)]}_{\text{-ELBO(q)}} + \operatorname{log}p(X). 
-\end{align*}
+\end{aligned}
+$$
 
 Recall that the computation of our desired KL divergence is impossible, we have to optimize another objective that is equivalent to this KL divergence at least up to a constant. The new objective is called the *evidence lower bound* or ELBO: 
 
@@ -112,13 +116,15 @@ $$\varphi\left(\mathbb{E}[X]\right) \geq \mathbb{E}[\varphi\left(X\right)]$$
 
 Using Jensen's equality on the log probability distributipn of , we can directly derive Eq.5 by noting that 
 
-\begin{align*}
+$$
+\begin{aligned}
   \operatorname{log} & = \operatorname{log} \int_{Z} p(X, Z) \\
   & = \operatorname{log} \int_{Z} p(X, Z) \frac{q(Z)}{q(Z)} \\
   & = \operatorname{log} \Bigg(\mathbb{E}_{q(Z)} \Bigg[\frac{p(X, Z)}{q(Z)} \Bigg] \Bigg) \\
   & \geq \mathbb{E}_{q(Z)}\Bigg[ \operatorname{log} \frac{p(X, Z)}{q(Z)} \Bigg] \quad (\text{Jensen's inequality}) \tag{6} \\
   & = \mathbb{E}_{q(Z)} [\operatorname{log}p(X, Z)] - \mathbb{E}_{q(Z)}[\operatorname{log}q(Z)]
-\end{align*}
+\end{aligned}
+$$
 
 We achieve the same result as using the definition of KL divergence. 
 
