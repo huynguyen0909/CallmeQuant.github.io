@@ -9,6 +9,8 @@ tags:
   - Statistics
 ---
 
+In this post, I first develop an intuition for variational inference as a pivotal family of algorithms using optimization for inference problems. From there, we  explore some derivations of the evidence lower bound (ELBO) and its properties.
+
 # **Introduction**
 
 Whenever we refer to the Bayesian inference problem, modern statisticians have demaned computation techniques that are scalable to extremely large data sets with thousand of unknown parameters to infer. Moreover, inference about unknown quantities in the real world often requires the computation of complex posterior densities. That's why an algorithm that could efficiently approximate these densities would be favorable.
