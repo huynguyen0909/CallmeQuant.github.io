@@ -1,5 +1,5 @@
 ---
-title: "Welcome to Jekyll!"
+title: "Variational Inference - An Introduction"
 date: 2023-01-28
 categories:
   - Study
