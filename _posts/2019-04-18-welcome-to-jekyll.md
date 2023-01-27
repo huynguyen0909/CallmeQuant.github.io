@@ -37,6 +37,7 @@ From the view of KL divergence, minimizing KL divergence can be intepreted as mi
 The previous section offers a brief introduction about the variational inference method. In this section, we will dive into the way the concept of variaional optimization can be applied to the inference problem. As discussed earlier, suppose that we have a fully Bayesian model in which all given parameters are specified with prior distributions. Normally, the evidence is not analytically tractable. That's why we need some bound (or more precisely lower bound) that could be used to approximate the Evidence, $P(X)$. There are two standard ways to compute the ELBO quantity: via Jensen's Inequality and Kullback-Leibler Divergence. 
 
 ### **Why we coin the term "Evidence"**
+
 To further understand the evidence lower bound, it is necessary to work out the term "evidence". **Evidence**, to put it simply, is a likelihood function evaluated at some fixed parameter, $\theta$ and is illustrated by the following quantity
 
 $$\operatorname{log}p(X, \theta) $$
@@ -47,6 +48,7 @@ This quantity is intuitively called "evidence" because we would like to expect t
 
 
 ## **Intuition**
+
 We are given a relationship between our observations and latent variables 
 Suppose that direct computation of the evidence is impossible due to intractable nature of the problem; however, the computation of the complete data-likelihood is much easier. Thus, we can introduce a distribution over the latent variables and decompose the log marginal probability as follows:
 
@@ -58,7 +60,7 @@ where
 $$
 \begin{aligned}
 \mathcal{L}(q) & = \int q(Z) \operatorname{ln} \Bigg\{ \frac{p(X, Z)}{q(Z)} \Bigg\} dZ \\
-\operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln}\Bigg\{ \frac{p(Z \mid X)}{q(Z)} \Bigg\} dZ
+\operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln} \Bigg\{ \frac{p(Z \mid X)}{q(Z)} \Bigg\} dZ
 \end{aligned}
 $$
 
@@ -69,6 +71,7 @@ $$\operatorname{ln}p(X, Z) = \operatorname{ln}p(Z \mid X) + \operatorname{ln}p(X
 which we then substitute into the expression for $\mathcal{L}(q)$ to give rise to two terms: the first term cancels the presence of $\operatorname{KL}(q || p)$ while the other returns the required log likelihood $\operatorname{ln}p(X)$. 
 
 ## **First Derivation: KL Divergence**
+
 Using the definition of Kullback-Leibler divergence, we can easily derive the equation 1:
 
 $$
@@ -96,6 +99,7 @@ As can be seen from Eq.5, the log evidence $\operatorname{log}p(X)$ is always a 
 ## **Second Derivation: Jensen's Inequality**
 
 ### **Jensen's Inequality**
+
 The Jensen's inequality could be stated in a probablistic form as
 
  follows:
