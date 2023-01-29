@@ -1,6 +1,8 @@
 ---
 title: "Variational Inference - An Introduction"
 date: 2023-01-28
+mathjax: true
+toc: true
 categories:
   - Study
 tags:
@@ -66,9 +68,9 @@ $$
 
 The above relation could be easily verified by first making use of the product rule upon the joint distribution of $X$ and $Z$
 
-$$\operatorname{ln}p(X, Z) = \operatorname{ln}p(Z \mid X) + \operatorname{ln}p(X)$$ 
+$$\operatorname{ln}p(X, Z) = \operatorname{ln}p(Z \mid X) + \operatorname{ln}p(X). \tag{2}$$
 
-which we then substitute into the expression for $\mathcal{L}(q)$ to give rise to two terms: the first term cancels the presence of $\operatorname{KL}(q || p)$ while the other returns the required log likelihood $\operatorname{ln}p(X)$. 
+which we then substitute into the expression for $\mathcal{L}(q)$ to give rise to two terms: the first term cancels the presence of $\operatorname{KL}[q \parallel p]$ while the other returns the required log likelihood $\operatorname{ln}p(X)$. 
 
 ## **First Derivation: KL Divergence**
 
@@ -88,7 +90,7 @@ $$\operatorname{ELBO}(q) := \mathbb{E}_{q(Z)}[\operatorname{log}p(Z, X)] - \math
 
 Then we can rewrite Eq.2 as
 
-$$\operatorname{log}p(X) = \operatorname{ELBO}(q) + \operatorname{KL}[q(Z) || p(Z \mid X)]. \tag{4}$$
+$$\operatorname{log}p(X) = \operatorname{ELBO}(q) + \operatorname{KL}[q(Z) \parallel p(Z \mid X)]. \tag{4}$$
 
 Since the KL divergence must be non-negative, we can imply that 
 
@@ -133,6 +135,6 @@ $$
 We achieve the same result as using the definition of KL divergence. 
 
 To recapitulate, the overal routine of Variational Inference can be summarized as follows
-+ Initialize some distribution belongs to the tractable family of distributions $\mathcal{Q}$ $q^{(0)}(Z) \in \mathcal{Q}$.
++ Initialize some distribution belongs to the tractable family of distributions $\mathcal{Q}$, $q^{(0)}(Z) \in \mathcal{Q}$.
 + Iteratively minimizes the KL divergence between the approximating at iteration $t$, denoted by $q^{(t)}(Z)$ and the targeted posterior distribution $p(Z \mid X)$. This can be done by alternatively maximizing the negative $\operatorname{ELBO}(q)$ as defined Eq.3.
 + The optimum of the above optimization problem $q^\ast(Z)$ is the best approximation of the distribution.
