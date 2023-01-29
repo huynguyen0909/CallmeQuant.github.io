@@ -28,7 +28,7 @@ where $Z$ is a latent variable that supports the government of the distribution 
 
 Variational inference (VI), unlike the class of sampling methods such as Metropolis-Hasting algorithm or Gibbs sampling, lends techniques from optimization to seek for a simpler and more tractable probability distribution with density $q(Z)$ bounded to some tractable family of distributions $\mathcal{Q}$ like Gaussians such that it can approximate the desired posterior distribution $p(Z \mid X)$. The optimal VI approximation is found by minimizing the **Kullback-Leibler** (KL) divergence from $q(Z)$ to $p(Z \mid X)$
 
-$$q^\ast(Z) = \underset{{q(Z) \in \mathcal{Q}}}{\operatorname{arg min}} KL[q(Z) || p(Z \mid X)].$$
+$$q^\ast(Z) = \underset{q(Z) \in \mathcal{Q}}{\operatorname{arg min}} KL[q(Z) || p(Z \mid X)].$$
 
 From the view of KL divergence, minimizing KL divergence can be intepreted as minimizing the relative entropy between two distributions (or the amount of information needed in one distribution when transforming to another distribution)
 
@@ -59,8 +59,8 @@ where
 
 $$
 \begin{aligned}
-\mathcal{L}(q) & = \int q(Z) \operatorname{ln} \Bigg\\{ \frac{p(X, Z)}{q(Z)} \Bigg\\} dZ \\
-\operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln} \Bigg\\{ \frac{p(Z \mid X)}{q(Z)} \Bigg\\} dZ
+\mathcal{L}(q) & = \int q(Z) \operatorname{ln} \Bigg\lbrace \frac{p(X, Z)}{q(Z)} \Bigg\rbrace} dZ \\
+\operatorname{KL}(q || p) & = - \int q(Z) \operatorname{ln} \Bigg\lbrace{ \frac{p(Z \mid X)}{q(Z)} \Bigg\rbrace} dZ
 \end{aligned}
 $$
 
