@@ -1,6 +1,17 @@
+---
+title: "Boostrapping with Extension to Markov Chain"
+date: 2022-10-20
+mathjax: true
+toc: true
+categories:
+  - Study
+tags:
+  - Demand Forecasting
+  - Markov Chain
+  - Statistics
+---
 
-# Boostrapping with extension to Markov Chain 
-## Motivation and Algorithm Sketch
+# Motivation and Algorithm Sketch
 In the context of forecasting intermittent demands, many bootstrapping approaches have been proposed to overcome the obstacles with this specific pattern of time series, which is not efficiently manipulated by many parametric models (Shenstone and Hyndman, 2003). The boostrapping approach propose by Willemain et al., (2004) is the most attracted and well-approved in both academic literature and real-world applications. To improve the accuracy of forecasting procedures of products posed highly intermittent patterns, Willemain devised the simple boostrapping method by plug in two features (extensions), the use of discrete-time Markov Chain and the process of "Jittering". 
 	
 Concerning conventional boostrapping, which was developed by Efron (1979), the method involves repetitively sampling with replacement from the original data set, thus construct independent boostrap replications, in order to estimate the empirical distribution of the demand (or sale volumes under our concern). Nevertheless, two significant drawbacks acknowledged in this method are: First, the possibility of any autocorrelations presenting in the data violates the assumption of independence amongst observations and Second, the generated values of the reconstructed distribution may not be observed, yet still compatible with the earlier distribution.
@@ -23,7 +34,7 @@ Hence, within the process above, we try to encompass the conditional structure o
 	
 We repeat the process multiple times (Willemain et al., 2004 used $1,000$ replications to obtain the empirical distribution). As we clearly inspect, the design of "jittering" process is to shift up or down the primary values by a random quantity which equals to $\sqrt{X^{\ast}}Z$. Since this generated quantity could reduce the original values to be below zero, we restrict them to be $X$ if negative values are returned. Finally, we average the values obtained for each future time step $h$ to obtain is each expected values for future horizon. 
 
-## Implementation
+# Implementation
 We will use the package [Markovchain](https://cran.r-project.org/web/packages/markovchain/vignettes/an_introduction_to_markovchain_package.pdf) by Spedicato (2022) to estimate the transition probabilities using MLE method. Then, we will follow the step from Willemain's method to forecast the future demand based on resampling and **jittering**.
 ```{r, message = FALSE, warning = FALSE}
 library(dplyr)
