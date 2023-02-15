@@ -28,8 +28,8 @@ Hence, within the process above, we try to encompass the conditional structure o
 $$
 X = 
 \begin{cases}
-& 1 + \\text{INT}(X^{\\ast} + Z\\sqrt{X^{\\ast}}), \\quad \\text{if } X \gt 0 \\
-& 0, \\quad \\text{otherwise} 
+& 1 + \text{INT}(X^{\ast} + Z\sqrt{X^{\ast}}), \quad \text{if } X \gt 0 \\
+& 0, \quad \text{otherwise} 
 \end{cases}
 $$
 	
