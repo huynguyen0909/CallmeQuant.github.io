@@ -24,19 +24,19 @@ Hence, within the process above, we try to encompass the conditional structure o
 	
 +  Replace all values where demand occurred with values from a set of positive previous demand sizes. 
 + Jittering the values with the deviated realization of standard normal $Z$. If we assume that the forecast is $X$ and $X^{\ast}$ then $X$ would be:
-		\begin{equation}
-			X = 
-			\begin{cases}
-				& 1 + \text{INT}(X^{\ast} + Z\sqrt{X^{\ast}}), \quad \text{if} X >0 \\
-				& 0, \quad \text{otherwise} 
-			\end{cases}
-		\end{equation}
+$$
+X = 
+\begin{cases}
+& 1 + \\text{INT}(X^{\\ast} + Z\\sqrt{X^{\\ast}}), \\quad \\text{if} X /gt 0 \\
+& 0, \\quad \\text{otherwise} 
+\end{cases}
+$$
 	
 We repeat the process multiple times (Willemain et al., 2004 used $1,000$ replications to obtain the empirical distribution). As we clearly inspect, the design of "jittering" process is to shift up or down the primary values by a random quantity which equals to $\sqrt{X^{\ast}}Z$. Since this generated quantity could reduce the original values to be below zero, we restrict them to be $X$ if negative values are returned. Finally, we average the values obtained for each future time step $h$ to obtain is each expected values for future horizon. 
 
 # Implementation
 We will use the package [Markovchain](https://cran.r-project.org/web/packages/markovchain/vignettes/an_introduction_to_markovchain_package.pdf) by Spedicato (2022) to estimate the transition probabilities using MLE method. Then, we will follow the step from Willemain's method to forecast the future demand based on resampling and **jittering**.
-```{r, message = FALSE, warning = FALSE}
+```r
 library(dplyr)
 # Loading RData file 
 load(file = "boostrap_dat.RData")
@@ -130,65 +130,79 @@ As we could see from the result below, the method works really well under the ci
 This section would be additional for anyone interested in formal derivation of the Markov chain MLE estimation. Here we will follow the proof given in the note of [Cosma Shalizi](https://www.stat.cmu.edu/~cshalizi/) (one of the my most favorite statisticians). This proof assume that you are familiar with basic structure of Markov Chain and its properties. 
 
 Supposed that we have observed a sample from the chain, the realization of the random variable $X_{1}^{n}$, which is denoted by $x_{1}^{n} \neq x_1, x_2, \dots, x_{n}$. Then we would like to obtain the probability that we will observe such data points, or the joint probability of the sequence $x_{1}^{n}$
-	$$
-	\begin{aligned}
-	P\left(X_{1}^{n} = x_{1}^{n}\right) &= P\left(X_1 = x_1, X_2 = x_2, \dots,X_n = x_n\right) \\
-	& = P\left(X_1 = x_1\right) \prod_{t  = 2}^{n} P\left(X_t = x_t \mid X_{1}^{t-1} = x_{1}^{t-1}\right) \\
-	& = P\left(X_1 = x_1\right) \prod_{t  = 2}^{n} P\left(X_{t} = x_{t} \mid X_{t-1} = x_{t-1}\right)
-   \end{aligned}
-    $$
+
+$$
+\begin{align}
+P\left(X_{1}^{n} = x_{1}^{n}\right) &= P\left(X_1 = x_1, X_2 = x_2, \dots,X_n = x_n\right) \\
+& = P\left(X_1 = x_1\right) \prod_{t  = 2}^{n} P\left(X_t = x_t \mid X_{1}^{t-1} = x_{1}^{t-1}\right) \\
+& = P\left(X_1 = x_1\right) \prod_{t  = 2}^{n} P\left(X_{t} = x_{t} \mid X_{t-1} = x_{t-1}\right)
+\end{align}
+$$
+
 The second expression is the conditional probability of the process being at state $x_t$ given all past observations. On the other hand, the third expression is derived based on one of the most notable properties of a discrete time Markov chain is the first order Markov assumption. In other words, it is assumed that the model hold the \emph{Markov property}:
-	$$
-		P\left(X_{t} = j \mid X_{t-1} = i, X_{t-2} = i_{t-1}, \ldots, X_1 = i_1\right) = P\left(X_{t} = j \mid X_{t-1} = i\right)
-	$$
+$$
+P\left(X_{t} = j \mid X_{t-1} = i, X_{t-2} = i_{t-1}, \ldots, X_1 = i_1\right) = P\left(X_{t} = j \mid X_{t-1} = i\right)
+$$
 	
 As our target is to determine the MLE estimation for our transition probabilities, then we rewrite the above expression in terms of $p_{ij}$ to arrive at the likelihood function for the 
-	$$
-		L(p) = P(X_1 = x_1) \prod_{t  = 2}^{n} p_{x_{t-1} x_{t}}
-	$$
+
+$$
+L(p) = P(X_1 = x_1) \prod_{t  = 2}^{n} p_{x_{t-1} x_{t}}
+$$
 
 Assumed that $n_{ij}$ be the number of times observed state transits from $i$ to $j$ in our sample $X_{1}^{n}$, then we rewrite the \ref{eq:likelihood} in terms of $n_{ij}$.
-  $$
-    	L(p) = P(X_1 = x_1) \prod_{i=1}^{h} \prod_{j=1}^{h} p_{ij}^{n_{ij}}
-   $$
-    
+
+$$
+L(p) = P(X_1 = x_1) \prod_{i=1}^{h} \prod_{j=1}^{h} p_{ij}^{n_{ij}}
+$$
+
 Maximize the above expression \textit{w.r.t} the $p_{ij}$ by transforming it into logarithms (since it would be easier to deal with sums rather than product), taking derivatives, and setting it equal to $0$. However, it would be crucial to consider one special property of the Markov chain: it is stochastic row unitary. That is,
-    $$ 
-    \begin{aligned}
-    	p \cdot \boldsymbol{1}^\intercal & = \mathbf{1}^\intercal \\
-    	& \text{or} \\
-    	\sum_{j} p_{ij} & = 1, \quad \text{ for each } i
-    \end{aligned}
-    $$
+
+$$ 
+\begin{align}
+p \cdot \boldsymbol{1}^\intercal & = \mathbf{1}^\intercal \\
+& \text{or} \\
+\sum_{j} p_{ij} & = 1, \quad \text{ for each } i
+\end{align}
+$$
+
 where $\mathbf{1}^\intercal$ denotes the row vector with its entries equal to one.
 	
 It is clear that we have an equality constraint in our formulation and a formal way to tackle this problem would be reforming it to a standard optimization problem with Lagrange multipliers. However, in our case, there exists a method which is more effortless to handle such issue: Eliminating parameters. 
 
 The first thing to do is taking the logs of the likelihood function
-	$$
-	\mathcal{L}(p) =\log\left(P(X_1 = x_1)\right) + \sum_{i,j} n_{ij} \log p_{ij}
-	$$
+
+$$
+\mathcal{L}(p) =\log\left(P(X_1 = x_1)\right) + \sum_{i,j} n_{ij} \log p_{ij}
+$$
+
 then, randomly choose one of the transition probabilities to express the others. For easy manipulation, we would collect the probability of transiting to state $1$. Thus, for each $i$, $p_{i1} = 1 - \sum_{j=2}^{m} p_{ij}$. Subsequently, differentiating the log-likelihood with respect to $p_{ij}$ while ignoring any partial derivatives relating to $\frac{\partial}{\partial P_{i1}}$
-	$$
-	\frac{\partial \mathcal{L}}{\partial p_{ij}} = \frac{n_{ij}}{p_{ij}} - \frac{n_{i1}}{p_{i1}} 
-	$$
-	Letting this equal to zero, then we have the following relations,
-	$$
-	\begin{aligned}
-		\frac{n_{ij}}{\hat{p}_{ij}} &= \frac{n_{i1}}{\hat{p}_{i1}} \\
-		& \Updownarrow \\
-		\frac{n_{ij}}{n_{i1}} &= \frac{\hat{p}_{ij}}{\hat{p_{i1}}}
-	\end{aligned}
-	$$
+
+$$
+\frac{\partial \mathcal{L}}{\partial p_{ij}} = \frac{n_{ij}}{p_{ij}} - \frac{n_{i1}}{p_{i1}} 
+$$
+
+Letting this equal to zero, then we have the following relations,
+
+$$
+\begin{align}
+\frac{n_{ij}}{\hat p_{ij}} &= \frac{n_{i1}}{\hat p_{i1}} \\
+& \Updownarrow \\
+\frac{n_{ij}}{n_{i1}} &= \frac{\hat p_{ij}}{\hat p_{i1}}}
+\end{align}
+$$
+
 The above relations hold for all $j \neq 1$; thereby, we could conclude that 
-	$$
-	\begin{aligned}
-	\hat{p}_{ij} &= \frac{n_{ij}}{\frac{n_{i1}}{\hat{p}_{i1}}} \\
-	& = \frac{n_{ij}}{n_{i}} \\
-	& = \frac{n_{ij}}{\sum_{j=1}^{m} n_{ij}}
-	\end{aligned}
-	$$
-	where the last relation could be deduced as follows: $n_{i1}$ represent the number of observed consecutive transitions from state $i$ to state $1$ in random variable $X_{n}^{1}$ or expressing in terms of probability  $n_{i1} \propto P(X_{t} = i, X_{t+1} = 1)$, while $\hat{p}_{i1}$ indicates the chance that we move to other states starting from state $1$. Hence, applying the Bayes'rule in terms of proportional expression, then the fraction between the former and latter would result in $P(X_{t} = i)$, implying the number of times that state $i$ is recorded, which is proportional to $n_{i}$ or $\sum_{j=1}^{m} n_{ij}$. It is noteworthy that if $n_{i} = 0$, or the state $i$ is not appeared in the chain except for the last position, then we would formally set all probabilities of the transition from state $i$ to any state $j$ ($j \neq i$) to be zero, $\hat{p}_{ij} = 0$. Thus, it turns out that $\hat{p}_{ii} = 1$.
+
+$$
+\begin{align}
+\hat p_{ij} &= \frac{n_{ij}}{\frac{n_{i1}}{\hat p_{i1}}} \\
+& = \frac{n_{ij}}{n_{i}} \\
+& = \frac{n_{ij}}{\sum_{j=1}^{m} n_{ij}}
+\end{align}
+$$
+
+where the last relation could be deduced as follows: $n_{i1}$ represent the number of observed consecutive transitions from state $i$ to state $1$ in random variable $X_{n}^{1}$ or expressing in terms of probability  $n_{i1} \propto P(X_{t} = i, X_{t+1} = 1)$, while $\hat p_{i}$ indicates the chance that we move to other states starting from state $1$. Hence, applying the Bayes'rule in terms of proportional expression, then the fraction between the former and latter would result in $P(X_{t} = i)$, implying the number of times that state $i$ is recorded, which is proportional to $n_{i}$ or $\sum_{j=1}^{m} n_{ij}$. It is noteworthy that if $n_{i} = 0$, or the state $i$ is not appeared in the chain except for the last position, then we would formally set all probabilities of the transition from state $i$ to any state $j$ ($j \neq i$) to be zero, $\hat p_{ij} = 0$. Thus, it turns out that $\hat p_{ii} = 1$.
 
 # References
 1. Willemain, Thomas \& Smart, Charles & Schwarz, Henry. (2004). A new approach to forecasting intermittent demand for service parts inventories. International Journal of Forecasting. 20. 375-387. 10.1016/S0169-2070(03)00013-X. 
