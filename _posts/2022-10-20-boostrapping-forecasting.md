@@ -18,16 +18,17 @@ Concerning conventional boostrapping, which was developed by Efron (1979), the m
 	
 To transcend these limitations, Willemain 's WSS method utilizes the Markov chain to explicitly capture the autocorrelation between occurrences of demand and non-occurrences by evaluating the empirical distribution of the transition matrix. We will first summarize the incorporation of the dependency of current demand state on the previous demand occurrence status as follows:
 + Estimate the transition probability (in this context, it will be a $2 \times 2$ matrix) between two states defined above.
-+ Based upon this estimated transition probabilities and the \textbf{last} observed demand, generate a sequence of zero/non-zero values for the entire forecast horizon. 
++ Based upon this estimated transition probabilities and the **last** observed demand, generate a sequence of zero/non-zero values for the entire forecast horizon. 
 	
 Hence, within the process above, we try to encompass the conditional structure of the occurrence (or non-occurrence) with respect to the previous periods. After generating the future sequence of demands' states, we will only perform resampling demand size restricted to the previous periods where demands occurred and random selections will be collected based on these previous non-zero demands. As previously concerned, possible values that have not been observed in the past data set might be appeared in the future; thereby, need to be accounted in the boostrapped resamples. Willemain proposed a modification to this issue by introducing a "jittering" process which permits a greater variation around the selected positive values. The flow of the jittering procedures is as below:
 	
-+  Replace all values where demand occurred with values from a set of positive previous demand sizes. 
++ Replace all values where demand occurred with values from a set of positive previous demand sizes. 
 + Jittering the values with the deviated realization of standard normal $Z$. If we assume that the forecast is $X$ and $X^{\ast}$ then $X$ would be:
+
 $$
 X = 
 \begin{cases}
-& 1 + \\text{INT}(X^{\\ast} + Z\\sqrt{X^{\\ast}}), \\quad \\text{if} X /gt 0 \\
+& 1 + \\text{INT}(X^{\\ast} + Z\\sqrt{X^{\\ast}}), \\quad \\text{if } X \gt 0 \\
 & 0, \\quad \\text{otherwise} 
 \end{cases}
 $$
@@ -139,7 +140,8 @@ P\left(X_{1}^{n} = x_{1}^{n}\right) &= P\left(X_1 = x_1, X_2 = x_2, \dots,X_n = 
 \end{align}
 $$
 
-The second expression is the conditional probability of the process being at state $x_t$ given all past observations. On the other hand, the third expression is derived based on one of the most notable properties of a discrete time Markov chain is the first order Markov assumption. In other words, it is assumed that the model hold the \emph{Markov property}:
+The second expression is the conditional probability of the process being at state $x_t$ given all past observations. On the other hand, the third expression is derived based on one of the most notable properties of a discrete time Markov chain is the first order Markov assumption. In other words, it is assumed that the model hold the *Markov property*:
+
 $$
 P\left(X_{t} = j \mid X_{t-1} = i, X_{t-2} = i_{t-1}, \ldots, X_1 = i_1\right) = P\left(X_{t} = j \mid X_{t-1} = i\right)
 $$
@@ -188,7 +190,7 @@ $$
 \begin{align}
 \frac{n_{ij}}{\hat p_{ij}} &= \frac{n_{i1}}{\hat p_{i1}} \\
 & \Updownarrow \\
-\frac{n_{ij}}{n_{i1}} &= \frac{\hat p_{ij}}{\hat p_{i1}}}
+\frac{n_{ij}}{n_{i1}} &= \frac{\hat p_{ij}}{\hat p_{i1}}
 \end{align}
 $$
 
