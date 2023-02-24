@@ -37,7 +37,7 @@ $$
 We repeat the process multiple times (Willemain et al., 2004 used $1,000$ replications to obtain the empirical distribution). As we clearly inspect, the design of "jittering" process is to shift up or down the primary values by a random quantity which equals to $\sqrt{X^{\ast}}Z$. Since this generated quantity could reduce the original values to be below zero, we restrict them to be $X$ if negative values are returned. Finally, we average the values obtained for each future time step $h$ to obtain is each expected values for future horizon. 
 
 # Implementation
-We will use the package [Markovchain](https://cran.r-project.org/web/packages/markovchain/vignettes/an_introduction_to_markovchain_package.pdf) by Spedicato (2022) to estimate the transition probabilities using MLE method. Then, we will follow the step from Willemain's method to forecast the future demand based on resampling and **jittering**.
+We will use the package [Markovchain](https://cran.r-project.org/web/packages/markovchain/vignettes/an_introduction_to_markovchain_package.pdf) by Spedicato (2022) to estimate the transition probabilities using MLE method. Then, we will follow the step from Willemain's method to forecast the future demand based on resampling and **jittering**. The implementation is given in R language and I have prepared [a sample of data](https://github.com/CallmeQuant/Boostrapping-Markov-Chain/blob/main/boostrap_dat.RData) in the **.Rdata** format which is extracted from the [M5 Forecasting data set](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data) on Kaggle.
 ```r
 library(dplyr)
 # Loading RData file 
