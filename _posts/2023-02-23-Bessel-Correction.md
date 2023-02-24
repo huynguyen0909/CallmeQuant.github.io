@@ -42,10 +42,10 @@ Taking the expection of the RHS and do some manipulations:
 
 $$
 \begin{align}
-\mathbb{E} \Big [\frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Big] &= \mathbb{E} \Big[ \frac{1}{n} \sum_{i=1}^{n} (X_{i}^2 - 2 X_{i} \bar{X} + \bar{X}^2) \Big] \\
-&= \mathbb{E} \Big[ \frac{1}{n} \sum_{i=1}^{n} X_{i}^2 - 2 \bar{X} \frac{1}{n} \sum_{i=1}^{n} X_{i} + \frac{1}{n} \sum_{i=1}^{n} \bar{X}^2 \Big] \\
-&= \mathbb{E} \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] - \mathbb{E} [2\bar{X}^2] + \mathbb{E}[\bar{X}^2] \tag{5} \\
-&= \mathbb{E} \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] - \mathbb{E}[\bar{X}^2] \\
+\mathbb{E} \Big [\frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Bigg] &= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} (X_{i}^2 - 2 X_{i} \bar{X} + \bar{X}^2) \Bigg] \\
+&= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} X_{i}^2 - 2 \bar{X} \frac{1}{n} \sum_{i=1}^{n} X_{i} + \frac{1}{n} \sum_{i=1}^{n} \bar{X}^2 \Bigg] \\
+&= \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] - \mathbb{E} [2\bar{X}^2] + \mathbb{E}[\bar{X}^2] \tag{5} \\
+&= \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] - \mathbb{E}[\bar{X}^2] \\
 &= \mathbb{E}[X_{i}^2] - \mathbb{E}[\bar{X}^2]. \tag{6}
 \end{align}
 $$
@@ -87,7 +87,7 @@ $$
 where 
 $$
 \begin{align}
-\operatorname{Var} \Big[\bar{X}] &= \operatorname{Var}[\frac{1}{n} \sum_{i=1}^{n} X_{i} \Big] \\
+\operatorname{Var} [\bar{X}] &= \operatorname{Var} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i} \Bigg] \\
 &= \frac{1}{n^2} \sum_{i=1}^{n} \operatorname{Var}[X_{i}] \quad \text{ i.i.d assumption} \\
 &= \frac{1}{n^2} \sum_{i=1}^{n} \sigma^2 \tag{11} \\
 &= \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}.
@@ -99,7 +99,7 @@ As we have find out all the necessary terms, the expectation of the sample varia
 $$
 \begin{align}
 \mathbb{E}[s^2] &= \sigma^2 + \mu^2 - (\frac{\sigma^2}{n} + \mu^2) \\
-&= \sigma^2 \Big(1 - \frac{1}{n} \Big). \tag{12}
+&= \sigma^2 \Bigg(1 - \frac{1}{n} \Bigg). \tag{12}
 \end{align}
 $$
 
