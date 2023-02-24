@@ -29,3 +29,22 @@ We will give a formal definition of unbiased estimator:
 To put it simply and specific to our case, let $s^2$ and $\sigma^2$ be the sample variance and population variance respectively. An unbiased estimator of the population variance must statisfy the following condition:
 
 $$ \mathbb{E} [s^2] - \sigma^2 = 0 \Leftrightarrow \mathbb{E} [s^2] = \sigma^2. \tag{3} $$
+
+Now, we will commence with the proof of the Bessel's correction.
+
+# **A Brief Proof**
+First, I advocate the examination of the *biasedness* of the below estimator for the population variance:
+
+$$ s^2 = \frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2. \tag{4} $$
+
+Taking the expection of the RHS and do some manipulations:
+
+$$
+\begin{align}
+\mathbb{E} \Big [\frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Big] &= \mathbb{E} \Big[ \frac{1}{n} \sum_{i=1}^{n} (X_{i}^2 - 2 X_{i} \bar{X} + \bar{X}^2) \Big] \\
+&= \mathbb{E} \Big[ \frac{1}{n} \sum_{i=1}^{n} X_{i}^2 - 2 \bar{X} \frac{1}{n} \sum_{i=1}^{n} X_{i} + \frac{1}{n} \sum_{i=1}^{n} \bar{X}^2 \Big] \\
+&= \mathbb{E} \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] - \mathbb{E} [2\bar{X}^2] + \mathbb{E}[\bar{X}^2] \tag{5} \\
+&= \mathbb{E} \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] - \mathbb{E}[\bar{X}^2] \\
+&= \mathbb{E}[X_{i}^2] - \mathbb{E}[\bar{X}^2]. \tag{6}
+\end{align}
+$$
