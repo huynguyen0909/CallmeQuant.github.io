@@ -48,3 +48,21 @@ $$
 &= \mathbb{E}[X_{i}^2] - \mathbb{E}[\bar{X}^2]. \tag{6}
 \end{align}
 $$
+
+where the equation at step (5) is based on the fact that
+
+$$  \sum_{i=1}^{n} X_{i} = n \bar{X}. \tag{7}$$
+
+and the equality at the last step (6) holds as the assumption our random variables $X_{i}$'s are i.i.d 
+
+$$ \mathbb{E}  \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] = \frac{1}{n}  \frac{1}{n} \sum_{i=1}^{n} \mathbb{E} [X_{i}^2] = \mathbb{E}[X_{i}^2]. \tag{8} $$
+
+At this stage, if we can identify each term in the equation (6), we could determine the final expression for the targeted quantity. Let's begin with the $\mathbb{E}[X_{i}^2].
+
+Before diving into any details, it is critically important to bear in mind that since we assume the data are withdrawn from the same probability distribution then all random variables $X_{i}$'s are equidispersed, i.e., they share the same variance. Moreover, recall this useful identity that illustrates the relation between variance and expectation. For any random variable $X$,
+
+$$ operatorname{Var}[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2, \tag{9}$$
+
+or we can rewrite it as follows,
+
+$$ \mathbb{E}[X^2] = operatorname{Var}[X] + \mathbb{E}[X]^2. \tag{10}$$
