@@ -9,6 +9,7 @@ tags:
   - Demand Forecasting
   - Markov Chain
   - Statistics
+  - R
 ---
 
 # Motivation and Algorithm Sketch
