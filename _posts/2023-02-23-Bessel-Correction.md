@@ -7,6 +7,7 @@ categories:
   - Study
 tags:
   - Statistics
+  - Point estimation
 ---
 
 In this post, I would display a brief and short proof of the Bessel's Correction, which is a formula of an unbiased estimator for the population variance. After this post, readers will comprehend the reason behind the denominator in the sample variance formula (which is $N-1$ rather than $N$). 
@@ -57,12 +58,60 @@ and the equality at the last step (6) holds as the assumption our random variabl
 
 $$ \mathbb{E}  \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] = \frac{1}{n} \sum_{i=1}^{n} \mathbb{E} [X_{i}^2] = \mathbb{E}[X_{i}^2]. \tag{8} $$
 
-At this stage, if we can identify each term in the equation (6), we could determine the final expression for the targeted quantity. Let's begin with the $\mathbb{E}[X_{i}^2]$.
-
-Before diving into any details, it is critically important to bear in mind that since we assume the data are withdrawn from the same probability distribution then all random variables $X_{i}$'s are equidispersed, i.e., they share the same variance. Moreover, recall this useful identity that illustrates the relation between variance and expectation. For any random variable $X$,
+At this stage, if we can identify each term in the equation (6), we could determine the final expression for the targeted quantity. Before diving into any details, it is critically important to bear in mind that since we assume the data are withdrawn from the same probability distribution then all random variables $X_{i}$'s are equidispersed, i.e., they share the same variance. Moreover, recall this useful identity that illustrates the relation between variance and expectation. For any random variable $X$,
 
 $$ \operatorname{Var}[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2, \tag{9}$$
 
 or we can rewrite it as follows,
 
 $$ \mathbb{E}[X^2] = \operatorname{Var}[X] + \mathbb{E}[X]^2. \tag{10}$$
+
+Then, assume that we know the population mean $\mu$, we have
+
+$$
+\begin{align}
+\mathbb{E}[X_{n}^2] &= \operatorname{Var}[X_{n}] + \mathbb{E}[X_{n}]^2 \\
+&= \sigma^2 + \mu^2, 
+\end{align}
+$$
+
+and 
+
+$$
+\begin{align}
+\mathbb{E}[\bar{X}^2] &= \operatorname{Var}[\bar{X}] + \mathbb{E}[\bar{X}]^2 \\
+&= \frac{\sigma^2}{n} + \mu^2. 
+\end{align}
+$$
+
+where 
+$$
+\begin{align}
+\operatorname{Var} \Big[\bar{X}] &= \operatorname{Var}[\frac{1}{n} \sum_{i=1}^{n} X_{i} \Big] \\
+&= \frac{1}{n^2} \sum_{i=1}^{n} \operatorname{Var}[X_{i}] \quad \text{ i.i.d assumption} \\
+&= \frac{1}{n^2} \sum_{i=1}^{n} \sigma^2 \tag{11} \\
+&= \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}.
+\end{align}
+$$
+
+As we have find out all the necessary terms, the expectation of the sample variance $s^2$ would be 
+
+$$
+\begin{align}
+\mathbb{E}[s^2] &= \sigma^2 + \mu^2 - (\frac{\sigma^2}{n} + \mu^2) \\
+&= \sigma^2 \Big(1 - \frac{1}{n} \Big). \tag{12}
+\end{align}
+$$
+
+The term $(1 - \frac{1}{n})$ is the major component resulting in the biasedness of the sample variance. If $n$ goes to infinity (i.e., we have a large enough sample), then this term will shrink to one and $\mathbb{E}[s^2] = \sigma^2$. However, in reality we often don't obtain such sample and we demand an unbiased estimator. That is the reason why we should multiply both sides of equation (12) by $(1 - \frac{1}{n}) = (\frac{n-1}{n}) to obtain
+
+$$
+\begin{align}
+\mathbb{E} \Bigg[ \Bigg(\frac{n}{n-1}\Bigg) s^2 \Bigg] &= \mathbb{E} \Bigg[\frac{1}{n-1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Bigg] \\
+&= \sigma^2. \tag{13}
+\end{align}
+$$
+
+Hence, Bessel's correction leads to the desired quantity to arrive at the unbiased estimator for population variance, which is $\frac{1}{n-1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2$.
+
+
