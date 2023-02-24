@@ -22,6 +22,10 @@ $$ s^2 = \frac{1}{n-1} \sum_{i = 1}^{n} (X_{i} - \bar{x}). \tag{2}$$
 
 The above rectification is sometimes called Bessel's correction (this is a jargon!). It can be easily shown by computational experiment that if repeat multiple times the simulation of the sample variance using Bessel's correction, it will be approximately idential to the population variance (of course since we are conducting experiment, it is reasonable to assume that the population variance is known). Hence, the idea of the proof revolves around the unbiased property of an estimator. 
 
-To put it simply, an unbiased estimator must statisfy the following condition:
+We will give a formal definition of unbiased estimator:
 
-$$ 
+**Definition (Unbiased estimator)** Given an estimator $\hat{\theta}$ of a parameter $\theta$, the quantity $\operatorname{Bias} [\hat{\theta}] = \mathbb{E}[\hat{\theta}] - \theta$ is the *bias* of the estimator $\hat{\theta}$. If the bias is zero, i.e., $\mathbb{E}[\hat{\theta}] = 0$ the estimator $\hat{\theta}$ is unbiased. 
+
+To put it simply and specific to our case, let $s^2$ and $\sigma^2$ be the sample variance and population variance respectively. An unbiased estimator of the population variance must statisfy the following condition:
+
+$$ \mathbb{E} [s^2] - \sigma^2 = 0 \Leftrightarrow \mathbb{E} [s^2] = \sigma^2. \tag{3} $$
