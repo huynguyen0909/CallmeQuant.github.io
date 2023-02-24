@@ -15,7 +15,7 @@ In this post, I would display a brief and short proof of the Bessel's Correction
 # **Introduction**
 In every introductory statistics course, students learn how to compute the sample moments (usually the fisrt and second moments or the mean and variance respectively). The sample mean is familiar to derive. Let us present some notations using for this post. Suppose that $X = \\{X_1, X_2, \dots, X_{n} \\}$ be a sample of $n$ i.i.d random variabels where i.i.d stands for identically and independently distributed. The sample mean $\bar{X}$ is calculated as
 
-$$\bar{X} = \frac{1}{n} \sum_{i = 1}^{n} X_{i}. \tag{1} $$ 
+$$ \bar{X} = \frac{1}{n} \sum_{i = 1}^{n} X_{i}. \tag{1} $$ 
 
 Concerning the sample variance, we are often told to divide the sum of the squared difference between the realized values of each random variables and the sample mean by $n-1$ instead of $n$.
 
@@ -41,13 +41,13 @@ $$ s^2 = \frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2. \tag{4} $$
 Taking the expection of the RHS and do some manipulations:
 
 $$
-\begin{align}
+\begin{align*}
 \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Bigg] &= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} (X_{i}^2 - 2 X_{i} \bar{X} + \bar{X}^2) \Bigg] \\
 &= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} X_{i}^2 - 2 \bar{X} \frac{1}{n} \sum_{i=1}^{n} X_{i} + \frac{1}{n} \sum_{i=1}^{n} \bar{X}^2 \Bigg] \\
 &= \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] - \mathbb{E} [2\bar{X}^2] + \mathbb{E}[\bar{X}^2] \tag{5} \\
 &= \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] - \mathbb{E}[\bar{X}^2] \\
 &= \mathbb{E}[X_{i}^2] - \mathbb{E}[\bar{X}^2]. \tag{6}
-\end{align}
+\end{align*}
 $$
 
 where the equation at step (5) is based on the fact that
@@ -69,47 +69,47 @@ $$ \mathbb{E}[X^2] = \operatorname{Var}[X] + \mathbb{E}[X]^2. \tag{10}$$
 Then, assume that we know the population mean $\mu$, we have
 
 $$
-\begin{align}
+\begin{align*}
 \mathbb{E}[X_{n}^2] &= \operatorname{Var}[X_{n}] + \mathbb{E}[X_{n}]^2 \\
 &= \sigma^2 + \mu^2, 
-\end{align}
+\end{align*}
 $$
 
 and 
 
 $$
-\begin{align}
+\begin{align*}
 \mathbb{E}[\bar{X}^2] &= \operatorname{Var}[\bar{X}] + \mathbb{E}[\bar{X}]^2 \\
 &= \frac{\sigma^2}{n} + \mu^2. 
-\end{align}
+\end{align*}
 $$
 
 where 
 $$
-\begin{align}
+\begin{align*}
 \operatorname{Var} [\bar{X}] &= \operatorname{Var} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i} \Bigg] \\
 &= \frac{1}{n^2} \sum_{i=1}^{n} \operatorname{Var}[X_{i}] \quad (\text{ i.i.d assumption}) \\
 &= \frac{1}{n^2} \sum_{i=1}^{n} \sigma^2 \tag{11} \\
 &= \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}.
-\end{align}
+\end{align*}
 $$
 
 As we have find out all the necessary terms, the expectation of the sample variance $s^2$ would be 
 
 $$
-\begin{align}
-\mathbb{E}[s^2] &= \sigma^2 + \mu^2 - (\frac{\sigma^2}{n} + \mu^2) \\
+\begin{align*}
+\mathbb{E}[s^2] &= \sigma^2 + \mu^2 - \Bigg( \frac{\sigma^2}{n} + \mu^2 \Bigg) \\
 &= \sigma^2 \Bigg(1 - \frac{1}{n} \Bigg). \tag{12}
-\end{align}
+\end{align*}
 $$
 
 The term $(1 - \frac{1}{n})$ is the major component resulting in the biasedness of the sample variance. If $n$ goes to infinity (i.e., we have a large enough sample), then this term will shrink to one and $\mathbb{E}[s^2] = \sigma^2$. However, in reality we often don't obtain such sample and we demand an unbiased estimator. That is the reason why we should multiply both sides of equation (12) by $(1 - \frac{1}{n}) = (\frac{n-1}{n})$ to obtain
 
 $$
-\begin{align}
+\begin{align*}
 \mathbb{E} \Bigg[ \Bigg(\frac{n}{n-1}\Bigg) s^2 \Bigg] &= \mathbb{E} \Bigg[\frac{1}{n-1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Bigg] \\
 &= \sigma^2. \tag{13}
-\end{align}
+\end{align*}
 $$
 
 Hence, Bessel's correction leads to the desired quantity to arrive at the unbiased estimator for population variance, which is $\frac{1}{n-1} \sum_{i=1}^{n} (X_{i} - \bar{X})^2$.
