@@ -42,7 +42,7 @@ Taking the expection of the RHS and do some manipulations:
 
 $$
 \begin{align}
-\mathbb{E} \Big [\frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Bigg] &= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} (X_{i}^2 - 2 X_{i} \bar{X} + \bar{X}^2) \Bigg] \\
+\mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} (X_{i} - \bar{X})^2 \Bigg] &= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} (X_{i}^2 - 2 X_{i} \bar{X} + \bar{X}^2) \Bigg] \\
 &= \mathbb{E} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} X_{i}^2 - 2 \bar{X} \frac{1}{n} \sum_{i=1}^{n} X_{i} + \frac{1}{n} \sum_{i=1}^{n} \bar{X}^2 \Bigg] \\
 &= \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] - \mathbb{E} [2\bar{X}^2] + \mathbb{E}[\bar{X}^2] \tag{5} \\
 &= \mathbb{E} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] - \mathbb{E}[\bar{X}^2] \\
@@ -88,7 +88,7 @@ where
 $$
 \begin{align}
 \operatorname{Var} [\bar{X}] &= \operatorname{Var} \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i} \Bigg] \\
-&= \frac{1}{n^2} \sum_{i=1}^{n} \operatorname{Var}[X_{i}] \quad \text{ i.i.d assumption} \\
+&= \frac{1}{n^2} \sum_{i=1}^{n} \operatorname{Var}[X_{i}] \quad (\text{ i.i.d assumption}) \\
 &= \frac{1}{n^2} \sum_{i=1}^{n} \sigma^2 \tag{11} \\
 &= \frac{1}{n^2} n \sigma^2 = \frac{\sigma^2}{n}.
 \end{align}
@@ -103,7 +103,7 @@ $$
 \end{align}
 $$
 
-The term $(1 - \frac{1}{n})$ is the major component resulting in the biasedness of the sample variance. If $n$ goes to infinity (i.e., we have a large enough sample), then this term will shrink to one and $\mathbb{E}[s^2] = \sigma^2$. However, in reality we often don't obtain such sample and we demand an unbiased estimator. That is the reason why we should multiply both sides of equation (12) by $(1 - \frac{1}{n}) = (\frac{n-1}{n}) to obtain
+The term $(1 - \frac{1}{n})$ is the major component resulting in the biasedness of the sample variance. If $n$ goes to infinity (i.e., we have a large enough sample), then this term will shrink to one and $\mathbb{E}[s^2] = \sigma^2$. However, in reality we often don't obtain such sample and we demand an unbiased estimator. That is the reason why we should multiply both sides of equation (12) by $(1 - \frac{1}{n}) = (\frac{n-1}{n})$ to obtain
 
 $$
 \begin{align}
