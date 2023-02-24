@@ -56,7 +56,7 @@ $$  \sum_{i=1}^{n} X_{i} = n \bar{X}. \tag{7}$$
 
 and the equality at the last step (6) holds as the assumption our random variables $X_{i}$'s are i.i.d 
 
-$$ \mathbb{E}  \Big[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Big] = \frac{1}{n} \sum_{i=1}^{n} \mathbb{E} [X_{i}^2] = \mathbb{E}[X_{i}^2]. \tag{8} $$
+$$ \mathbb{E}  \Bigg[\frac{1}{n} \sum_{i=1}^{n} X_{i}^2 \Bigg] = \frac{1}{n} \sum_{i=1}^{n} \mathbb{E} [X_{i}^2] = \mathbb{E}[X_{i}^2]. \tag{8} $$
 
 At this stage, if we can identify each term in the equation (6), we could determine the final expression for the targeted quantity. Before diving into any details, it is critically important to bear in mind that since we assume the data are withdrawn from the same probability distribution then all random variables $X_{i}$'s are equidispersed, i.e., they share the same variance. Moreover, recall this useful identity that illustrates the relation between variance and expectation. For any random variable $X$,
 
