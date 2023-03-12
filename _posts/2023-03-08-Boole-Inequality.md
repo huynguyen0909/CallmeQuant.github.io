@@ -73,7 +73,11 @@ B_{i} &= A_{i} \setminus \bigcup_{j=1}^{i-1} A_j. \\
 \end{align}
 $$
 
-then obviously $\bigcup_{i=1}^\infty B_i = \bigcup_{i=1}^\infty A_i$ and $B_{i}\text{'s}$ are pairwise disjoint. Furthermore, by set construction, $B_{i} \subseteq A_{i}$, which gives us the following inequality by monocity of probability measure:
+then obviously 
+
+$$\bigcup_{i=1}^\infty B_i = \bigcup_{i=1}^\infty A_i$$
+
+and $B_{i}\text{'s}$ are pairwise disjoint. Furthermore, by set construction, $B_{i} \subseteq A_{i}$, which gives us the following inequality by monocity of probability measure:
 
 $$P(B_{i}) \leq P(A_{i}), \quad i = 1, 2, \dots$$
 
