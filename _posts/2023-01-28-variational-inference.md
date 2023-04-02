@@ -78,7 +78,7 @@ Using the definition of Kullback-Leibler divergence, we can easily derive the eq
 
 $$
 \begin{aligned}
-  \operatorname{KL}[q(Z) || p(Z \mid X) & = \int_{q} q(Z) \operatorname{log}\frac{q(Z)}{p(Z \mid X)} \\
+  \operatorname{KL}[q(Z) || p(Z \mid X)] & = \int_{q} q(Z) \operatorname{log}\frac{q(Z)}{p(Z \mid X)} \\
   & = \mathbb{E}_{q(Z)} \Bigg[\operatorname{log}\frac{q(Z)}{p(Z \mid X)} \Bigg]\\
   & = \underbrace{\mathbb{E}_{q(Z)}[\operatorname{log}q(Z)] - \mathbb{E}_{q(Z)}[\operatorname{log}p(Z, X)]}_{\text{-ELBO(q)}} + \operatorname{log}p(X). 
 \end{aligned}
@@ -124,7 +124,7 @@ Using Jensen's equality on the log probability distributipn of , we can directly
 
 $$
 \begin{aligned}
-  \operatorname{log} & = \operatorname{log} \int_{Z} p(X, Z) \\
+  \operatorname{log}p(X) & = \operatorname{log} \int_{Z} p(X, Z) \\
   & = \operatorname{log} \int_{Z} p(X, Z) \frac{q(Z)}{q(Z)} \\
   & = \operatorname{log} \Bigg(\mathbb{E}_{q(Z)} \Bigg[\frac{p(X, Z)}{q(Z)} \Bigg] \Bigg) \\
   & \geq \mathbb{E}_{q(Z)}\Bigg[ \operatorname{log} \frac{p(X, Z)}{q(Z)} \Bigg] \quad (\text{Jensen's inequality})\\
