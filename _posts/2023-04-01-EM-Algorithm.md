@@ -21,7 +21,7 @@ inference and it lays a foundation on Variational Inference (VI); thereby, I als
 # Introduction
 *Expectation Maximization* algorithm, or EM for short, is a common approach to tackle the *maximum likelihood estimations* (MLE) for any probabilistic models
 containing latent variables. Consider a probabilistic model settings in which the observed variables are denoted by $X$ with observed values $\lbrace x_1, \dots, x_N \rbrace$ 
-and all latent variables by $Z$. The parameters of the model are succintly denoted by $\theta$. To perform maximum likelihood inference, we need to derive the (log) likelihood $\operatorname{log} p(X \mid \theta)$. However, since our data generating process comprises some latent variables $Z$, we have to include them in our log likelihood function (although we have not truly observed them). It can be done through marginalizing these variables out
+and all latent variables by $Z$ with $\lbrace z_1, z_2, \dots, z_N \rbrace$. The parameters of the model are succintly denoted by $\theta$. To perform maximum likelihood inference, we need to derive the (log) likelihood $\operatorname{log} p(X \mid \theta)$. However, since our data generating process comprises some latent variables $Z$, we have to include them in our log likelihood function (although we have not truly observed them). It can be done through marginalizing these variables out
 
 $$
 \operatorname{log} p(X \mid \theta) = \sigma_{Z} \operatorname{log} p(X, Z \mid \theta). \tag{1}
@@ -29,7 +29,72 @@ $$
 
 The issue related to Eq.1 is the intractability as the number of values that our hidden variables can take increases. For example, suppose the *Gaussian Mixture Model* (GMM) with $N$ observations whose the latent variables - the number of clusters can take on one of values from $M$ clusers. This results in $M^N$ terms in Eq.1. 
 
-And here comes the boom! Expectation-Maximization or EM ([Dempster et al., 1977](Dempster, A. P., Laird, N. M., & Rubin, D. B. (1977). Maximum likelihood from incomplete data via the EM algorithm. Journal of the Royal Statistical Society. Series B (Methodological), 1–38.)) delivers a appropriate solution to address this problem. The underlying assumption is that the direct optimization of the log likelihood $\operatorname{log}p(X\ mid \theta)$ is more challenging than maximizing the *complete-data log likelihood* $\operatorname{log}p(X, Z \mid \theta)$ in some statistical problems. Additionally, as we have discussed earlier, the *complete-data log likelihood* is also intractable; thereby, EM constructs a lower bound on that likelihood function and iterativel optimize that lower bound. We will see later the EM algorithm always converges to a local maximum of $p(X \mid \theta).
+And here comes the boom! Expectation-Maximization or EM ([Dempster et al., 1977](Dempster, A. P., Laird, N. M., & Rubin, D. B. (1977). Maximum likelihood from incomplete data via the EM algorithm. Journal of the Royal Statistical Society. Series B (Methodological), 1–38.)) delivers a appropriate solution to address this problem. The underlying assumption is that the direct optimization of the log likelihood $\operatorname{log}p(X\ mid \theta)$ is more challenging than maximizing the *complete-data log likelihood* $\operatorname{log}p(X, Z \mid \theta)$ in some statistical problems. Additionally, as we have discussed earlier, the *complete-data log likelihood* is also intractable; thereby, EM constructs a lower bound on that likelihood function and iterativel optimize that lower bound. We will see later the EM algorithm always converges to a local maximum of $p(X \mid \theta)$.
+
+# General EM Algorithm
+As we mention above, EM uses a lower bound as its objective function in its optimization problem. The derivation of the lower bound is as follows:
++ By introducing a latent variable $Z$, we may define the log marginal likelihood as 
+
+$$
+\log p(X \lvert \theta) =
+\log \sum_{Z} p(X, Z \lvert \theta).
+\tag{2}
+$$
+
++ We notice that the summation inside the logarithm makes it extremely difficult to optimize such objective function. Hence, we need to get rid of that summation by using the 1-trick. To put it simply, we introduce a unrestrcited distribution  $q(Z)$ over the latent variable, simultaneously multiply and divide the term inside the summation of Eq. (2) by this distribution to obtain the *expectation* form 
+
+$$
+\begin{align*}
+\log p(X \lvert \theta) &=
+\log \sum_{Z} q(Z) \frac{p(X, Z \lvert \theta)}{q(Z)} \\
+&= \log \mathbb{E}_{q(Z)} \frac{p(X, Z \lvert \theta)}{q(Z)}.
+\tag{3}
+\end{align*}
+$$
+
++ We see that if we denote $f(x) = \log(x)$, then $f$ is a concave function and we can evoke a inequality by using the Jensen's inequality for a **concave** function $f$ (i.e. $f'' < 0$ for the domain of $f$) and a random variable $X$:
+ 
+$$f(\mathbb{E}[X]) \geq \mathbb{E}[f(X)].$$
+
+Then,
+
+$$
+\begin{align*}
+\log p(X \lvert \theta) &= \log \Bigg( \mathbb{E}_{q(Z)} \frac{p(X, Z \lvert \theta)}{q(Z)} \Bigg) \\
+& \geq \mathbb{E}_{q(Z)} \Bigg[ \log \frac{p(X, Z \lvert \theta)}{q(Z)} \Bigg] \\
+&= \mathcal{L}(\theta, q).
+\tag{4}
+\end{align*}
+$$
+
+The lower bound is a function of our parameter $\theta$ and the distribution $q$. Using the linearity of expection and property of logarithmic function, we can factorize as below
+
+$$\log p(X \lvert \theta) \geq \underbracket{\mathbb{E}_{q(Z)} [\log p(X, Z \lvert \theta)]}_{*} \underbracket{- \mathbb{E}_{q(Z)} [\log q(Z)]}_{**}. \tag{5}$$
+
+where $(\ast)$ is the expected complete-data log likelihood and $(\ast \ast)$ is the *entropy* of $q$. The question arises is that how we can choose the density $q(Z)$ such that we have a *tight* lower bound? In a sense, we can inspect the difference between our log marginal likelihood and the lower bound to explore such problem 
+
+$$
+\begin{align*}
+\log p(X \lvert \theta) - \mathcal{L}(\theta, q) &= 
+\log p(X \lvert \theta) - \mathbb{E}_{q(Z)} \log {{p(X, Z \lvert \theta)} \over {q(Z)}} \\ 
+&=\mathbb{E}_{q(T)} \log {{p(X \lvert \theta) q(Z)} \over {p(X, Z \lvert \theta)}} \\ 
+&= \mathbb{E}_{q(Z)} \log {{q(Z)} \over {p(Z \lvert X, \theta)}} \\ 
+&= \mathrm{KL}(q(Z) \mid\mid p(Z \lvert X, \theta)).
+\tag{6}
+\end{align*}
+$$
+
+Surprisingly, the difference between $\log p(X \lvert \theta)$ and $\mathcal{L}(\theta, q)$ is the Kullback-Leibler (KL) divergence between the density $q(Z)$ and the unknown true posterior over the latent variables. Since the KL divergence is always non-negative, setting the $q(Z)$ ideally to be $p(Z \lvert X, \theta)$ will make this KL divergence equals to zero and Eq. (5) will be an equality
+
+$$\log p(X \mid \theta) = \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(X, Z \lvert \theta)] - \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(Z \lvert X, \theta)].$$
+
+(To be continued!)
+
+
+
+
+
+
 
 
 
