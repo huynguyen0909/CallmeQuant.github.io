@@ -27,7 +27,7 @@ $$
 \operatorname{log} p(X \mid \theta) = \sum_{Z} \operatorname{log} p(X, Z \mid \theta). \tag{1}
 $$
 
-The issue related to Eq.1 is the intractability as the number of values that our hidden variables can take increases. For example, suppose the *Gaussian Mixture Model* (GMM) with $N$ observations whose the latent variables - the number of clusters can take on one of values from $M$ clusers. This results in $M^N$ terms in Eq.1. 
+The issue related to Eq. (1) is the intractability as the number of values that our hidden variables can take increases. For example, suppose the *Gaussian Mixture Model* (GMM) with $N$ observations whose the latent variables - the number of clusters can take on one of values from $M$ clusers. This results in $M^N$ terms in Eq. (1). 
 
 And here comes the boom! Expectation-Maximization or EM ([Dempster et al., 1977](Dempster, A. P., Laird, N. M., & Rubin, D. B. (1977). Maximum likelihood from incomplete data via the EM algorithm. Journal of the Royal Statistical Society. Series B (Methodological), 1–38.)) delivers a appropriate solution to address this problem. The underlying assumption is that the direct optimization of the log likelihood $\operatorname{log}p(X\ mid \theta)$ is more challenging than maximizing the *complete-data log likelihood* $\operatorname{log}p(X, Z \mid \theta)$ in some statistical problems. Additionally, as we have discussed earlier, the *complete-data log likelihood* is also intractable; thereby, EM constructs a lower bound on that likelihood function and iterativel optimize that lower bound. We will see later the EM algorithm always converges to a local maximum of $p(X \mid \theta)$.
 
@@ -75,9 +75,9 @@ where $(\ast)$ is the expected complete-data log likelihood and $(\ast \ast)$ is
 $$
 \begin{align*}
 \log p(X \lvert \theta) - \mathcal{L}(\theta, q) &= 
-\log p(X \lvert \theta) - \mathbb{E}_{q(Z)} \log {{p(X, Z \lvert \theta)} \over {q(Z)}} \\ 
-&=\mathbb{E}_{q(T)} \log {{p(X \lvert \theta) q(Z)} \over {p(X, Z \lvert \theta)}} \\ 
-&= \mathbb{E}_{q(Z)} \log {{q(Z)} \over {p(Z \lvert X, \theta)}} \\ 
+\log p(X \lvert \theta) - \mathbb{E}_{q(Z)} \log \frac{p(X, Z \lvert \theta)}{q(Z)} \\ 
+&=\mathbb{E}_{q(T)} \log \frac{p(X \lvert \theta) q(Z)}{p(X, Z \lvert \theta)} \\ 
+&= \mathbb{E}_{q(Z)} \log \frac{q(Z)}{p(Z \lvert X, \theta)} \\ 
 &= \mathrm{KL}(q(Z) \mid\mid p(Z \lvert X, \theta)).
 \tag{6}
 \end{align*}
