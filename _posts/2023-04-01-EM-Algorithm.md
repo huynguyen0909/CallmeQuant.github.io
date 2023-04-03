@@ -24,7 +24,7 @@ containing latent variables. Consider a probabilistic model settings in which th
 and all latent variables by $Z$ with $\lbrace z_1, z_2, \dots, z_N \rbrace$. The parameters of the model are succintly denoted by $\theta$. To perform maximum likelihood inference, we need to derive the (log) likelihood $\operatorname{log} p(X \mid \theta)$. However, since our data generating process comprises some latent variables $Z$, we have to include them in our log likelihood function (although we have not truly observed them). It can be done through marginalizing these variables out
 
 $$
-\operatorname{log} p(X \mid \theta) = \sigma_{Z} \operatorname{log} p(X, Z \mid \theta). \tag{1}
+\operatorname{log} p(X \mid \theta) = \sum_{Z} \operatorname{log} p(X, Z \mid \theta). \tag{1}
 $$
 
 The issue related to Eq.1 is the intractability as the number of values that our hidden variables can take increases. For example, suppose the *Gaussian Mixture Model* (GMM) with $N$ observations whose the latent variables - the number of clusters can take on one of values from $M$ clusers. This results in $M^N$ terms in Eq.1. 
@@ -62,14 +62,13 @@ $$
 \begin{align*}
 \log p(X \lvert \theta) &= \log \Bigg( \mathbb{E}_{q(Z)} \frac{p(X, Z \lvert \theta)}{q(Z)} \Bigg) \\
 & \geq \mathbb{E}_{q(Z)} \Bigg[ \log \frac{p(X, Z \lvert \theta)}{q(Z)} \Bigg] \\
-&= \mathcal{L}(\theta, q).
-\tag{4}
+&= \mathcal{L}(\theta, q). \tag{4}
 \end{align*}
 $$
 
 The lower bound is a function of our parameter $\theta$ and the distribution $q$. Using the linearity of expection and property of logarithmic function, we can factorize as below
 
-$$\log p(X \lvert \theta) \geq \underbracket{\mathbb{E}_{q(Z)} [\log p(X, Z \lvert \theta)]}_{*} \underbracket{- \mathbb{E}_{q(Z)} [\log q(Z)]}_{**}. \tag{5}$$
+$$\log p(X \lvert \theta) \geq \underbrace{\mathbb{E}_{q(Z)} [\log p(X, Z \lvert \theta)]}_{\ast} \underbrace{- \mathbb{E}_{q(Z)} [\log q(Z)]}_{\ast \ast}. \tag{5}$$
 
 where $(\ast)$ is the expected complete-data log likelihood and $(\ast \ast)$ is the *entropy* of $q$. The question arises is that how we can choose the density $q(Z)$ such that we have a *tight* lower bound? In a sense, we can inspect the difference between our log marginal likelihood and the lower bound to explore such problem 
 
