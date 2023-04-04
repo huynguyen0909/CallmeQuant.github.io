@@ -83,9 +83,30 @@ $$
 \end{align*}
 $$
 
-Surprisingly, the difference between $\log p(X \lvert \theta)$ and $\mathcal{L}(\theta, q)$ is the Kullback-Leibler (KL) divergence between the density $q(Z)$ and the unknown true posterior over the latent variables. Since the KL divergence is always non-negative, setting the $q(Z)$ ideally to be $p(Z \lvert X, \theta)$ will make this KL divergence equals to zero and Eq. (5) will be an equality
+Surprisingly, the difference between $\log p(X \lvert \theta)$ and $\mathcal{L}(\theta, q)$ is the Kullback-Leibler (KL) divergence between the density $q(Z)$ and the true posterior over the latent variables. Since the KL divergence is always non-negative, setting the $q(Z)$ ideally to be $p(Z \lvert X, \theta)$ will make this KL divergence equals to zero and Eq. (5) will be an equality
 
 $$\log p(X \mid \theta) = \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(X, Z \lvert \theta)] - \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(Z \lvert X, \theta)].$$
+
+At this step, we have all the ingredients for the construction of EM algorithm. , Keep in mind that since we can not use the complete-data log likelihood, we consider the expected value under the posterior of the latent variables which we can access from our knowledge about these hidden variables. Furthermore, we will introduce some indices to denote the evolution of the algorithm due to its iterative behaviour.
+
+Assume that the current value for the parameter is $\theta^{t}$. Then, the lower bound is maximized with respect to $q(Z)$ while holding $\theta^{t}$ fixed. The maximum value occurs at $q(Z) = p(Z \lvert X, \theta)$, which causes the KL divergence to be vanished and the lower bound is indeed indetical to the log likelihood 
+
+$$
+\begin{align*}
+\log p(X \lvert \theta) &= \mathbb{E}_{p(Z \lvert X, \theta^{t})} [\log p(X, Z \lvert \theta)] - \mathbb{E}_{p(Z \lvert X, \theta^{t})} [\log p(Z \lvert X, \theta)] \\
+&= Q(\theta, \theta^{t}) + H(\theta, \theta^{t}).\\
+\end{align*}
+$$
+
+where $Q(.) is the expected complete-data log likelihood under the optimal $q(Z) = p(Z \lvert X, \theta^{t}$ and H(.) is simply the negative entropy of the $q$ distribution and hence independent of $\theta$. To clarify, the expression indicates the expectation of $\theta$ with respect to some other $\theta^{t}$. This is the E step in EM algoritht
+
+There is one more thing I want to elaborate on the E step. How can we guarantee that maximizing the lower bound give rise to the same amount compared to maximizing the log likelihood. I follow the common reasoning by many people when discussing this problem. The KL divergence can be decomposed with regard to the entropy. That is,
+
+Turning to the M step 
+
+
+
+
 
 (To be continued!)
 
