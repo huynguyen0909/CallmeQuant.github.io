@@ -98,9 +98,9 @@ $$
 \end{align*}
 $$
 
-where $Q(.) is the expected complete-data log likelihood under the optimal $q(Z) = p(Z \lvert X, \theta^{t}$ and H(.) is simply the negative entropy of the $q$ distribution and hence independent of $\theta$. To clarify, the expression indicates the expectation of $\theta$ with respect to some other $\theta^{t}$. This is the E step in EM algoritht
+where $Q(.)$ is the expected complete-data log likelihood under the optimal $q(Z) = p(Z \lvert X, \theta^{t}$ and $H(.)$ is simply the negative entropy of the $q$ distribution and hence independent of $\theta$. To clarify, the expression indicates the expectation of $\theta$ with respect to some other $\theta^{t}$. This is the E step in EM algoritht
 
-There is one more thing I want to elaborate on the E step. How can we guarantee that maximizing the lower bound give rise to the same amount compared to maximizing the log likelihood. I follow the common reasoning by many people when discussing this problem. The KL divergence can be decomposed with regard to the entropy. That is,
+There is one more thing I want to elaborate on the E step. How can we guarantee that maximizing the lower bound give rise to the same amount compared to maximizing the log likelihood. I follow the common reasoning by many people when discussing this problem. The KL divergence can be decomposed with regard to the entropy (there is currently a post on [Jensen's inequality, Kullback-Leibler divergence and Entropy](https://callmequant.github.io/study/note-on-KL/) that I am still too busy to working on. Hopefully I have adequate time for it in the near future) . That is,
 
 Turning to the M step 
 
