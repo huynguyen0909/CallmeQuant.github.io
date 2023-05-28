@@ -1,6 +1,6 @@
 ---
 title: "Why Log Returns"
-date: 2023-04-22
+date: 2023-05-28
 mathjax: true
 toc: true
 categories:
