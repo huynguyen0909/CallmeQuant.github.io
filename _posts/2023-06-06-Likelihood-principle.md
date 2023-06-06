@@ -34,7 +34,8 @@ In other words, the Likelihood principle states that all the pertinent informati
 making inferences or decisions about the states of the nature must be given only by the *likelihood function*. As a result, it is worth noting that Likelihood principle only valid under two scenarios:
 
 i.  The *same* parameter $\theta$ must be included in the inference.
-ii. \theta consists of all the uncertainty of the model. In the next section, I will illustrate a classical example (D. V. Lindley and Philips 1976) of the failure of frequentist approach in satisfying the Likelihood principle, whereas the Bayesian framework naturally obeys this principle since it is conditional on the observed data and neutralize all the possible unknown factors inside this likelihood model.
+
+ii. $\theta$ consists of all the uncertainty of the model. In the next section, I will illustrate a classical example (D. V. Lindley and Philips 1976) of the failure of frequentist approach in satisfying the Likelihood principle, whereas the Bayesian framework naturally obeys this principle since it is conditional on the observed data and neutralize all the possible unknown factors inside this likelihood model.
 
 (to be continued!)
 
