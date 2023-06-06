@@ -35,9 +35,9 @@ making inferences or decisions about the states of the nature must be given only
 
 i.  The *same* parameter $\theta$ must be included in the inference.
 
-ii. $\theta$ consists of all the uncertainty of the model. In the next section, I will illustrate a classical example (D. V. Lindley and Philips 1976) of the failure of frequentist approach in satisfying the Likelihood principle, whereas the Bayesian framework naturally obeys this principle since it is conditional on the observed data and neutralize all the possible unknown factors inside this likelihood model.
+ii. $\theta$ consists of all the uncertainty of the model. In the next section, I will illustrate a classical example (D. V. Lindley and Phillips 1976) of the failure of frequentist approach in satisfying the Likelihood principle, whereas the Bayesian framework naturally obeys this principle since it is conditional on the observed data and neutralize all the possible unknown factors inside this likelihood model.
 
-(to be continued!)
-
+# A Paradoxical Experiment
+As I introduced earlier, the example constructed by Lindley and Phillips (1976) is a typical settings of the major shortcoming of classical statistics framework. Imagine an experiment is conducted by tossing a coin 12 times independently and observe 9 heads together with 3 tails. We construct a hypothesis about our interested bias parameter $\theta$ (the true probability of heads) in a following manner: The null hypothesis $H_0: \theta = \ddfrac{1}{2}$ versus the alternative hypothesis: $H_1 = \theta > \ddfrac{1}{2}$. The inadequate given information leads us to two different choices for sampling distribution (determined through the joint distribution of all observation conditioned on $\theta$). 
 
 
