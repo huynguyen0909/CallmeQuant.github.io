@@ -52,7 +52,7 @@ The two models resemble in the likelihood functional form. In other words, the l
 
 $$\theta^3(1-\theta)^9.$$
 
-We may compute the $p$-value corresponding to either of these alternatives with the usual decision rule "Reject $H_0$ if $p > \alpha$" where $\alpha$ is the probability of making Type $I$ error\footnote{Usually, $\alpha$ is set to be small enough, i.e., $0.01, 0.05, \text{ or } 0.10$}. Applying Eq.1 for binomial likelihood and Eq.2 for the negative binomial likelihood, we obtain the $p$-value - the probability that we'd observe a more extreme test statistic in the direction of the alternative hypothesis than we did, assuming the truth of the null hypothesis (or equivalently, if our true $\theta$ is $\frac{1}{2}$, what is the chance of observing an equal or more $9$ heads in $12$ flips,
+We may compute the $p$-value corresponding to either of these alternatives with the usual decision rule "Reject $H_0$ if $p > \alpha$" where $\alpha$ is the probability of making Type $I$ error. Applying Eq.1 for binomial likelihood and Eq.2 for the negative binomial likelihood, we obtain the $p$-value - the probability that we'd observe a more extreme test statistic in the direction of the alternative hypothesis than we did, assuming the truth of the null hypothesis (or equivalently, if our true $\theta$ is $\frac{1}{2}$, what is the chance of observing an equal or more $9$ heads in $12$ flips,
 
 $$
 \begin{align}
