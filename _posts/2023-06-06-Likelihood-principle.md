@@ -64,4 +64,10 @@ $$
 Hence, if we use the "common" Type $I$ error level $\alpha = 0.05$, two models produce two different conclusions: Not reject $H_0$ if X was assumed binomial, but reject if it was assumed negative binomial. Since there is no further information about the settings of the experiments; thereby, it is unsettled how the frequentist would regard as "correct" decision. Moreover, assuming our statistical model is true, the decisions should be immaterial in any given case. The reason is that the two likelihood functions only differ by a multiplicative constant, which does not depend on $\theta$.
 
 
+![figure](/assets/images/binomvsnegbin.png)
+**Figure.** Likelihood function of Bin(12, $\theta$) and NegBin(r = 3, $\theta$) for different values of $\theta$.
+Two functions are similar in the functional form with a difference up proportional to a
+constan
+
+
 
