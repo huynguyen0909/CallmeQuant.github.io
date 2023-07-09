@@ -18,7 +18,10 @@ cases: estimating the mean $\mu$ with known variance $\sigma^2$, estimating
 the variance $\sigma^2$ given a known $\mu$, and estimating both $\mu$ and $\sigma^2$.
 The first two cases are single-parameter problem, while the last one is multiparameter one.
 Furthermore, I will derive the likelihood, the *conjugate* prior, and the posterior of 
-three cases
+three cases.
+
+# Inference normal distribution with known variance
+
 
 $$
 \begin{align}
