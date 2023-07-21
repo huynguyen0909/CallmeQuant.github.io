@@ -100,7 +100,7 @@ $$ \mathbf{Lz} = \mathbf{x} - \mu $$
 
 Generalizing the univariate standard normal above, let us now introduce the vector $x$ with elements $x_i \sim \mathcal{N}(0,1)$. Then we have the following theorem
 
-**Theorem** *Assuming* $\mathbf{x} \sim \mathcal{N}(0, \mathbf{I}_{d}),$ *we con obtain* $\mathbf{y} \sim \mathcal{N}(\mu, \boldsymbol{\Sigma})$ *using the tranformation* 
+**Theorem** *Assuming* $\mathbf{x} \sim \mathcal{N}(0, \mathbf{I}_{d}),$ *we can obtain* $\mathbf{y} \sim \mathcal{N}(\mu, \boldsymbol{\Sigma})$ *using the tranformation* 
 
 $$ \mathbf{y} = \mathbf{L} \mathbf{x} + \mu,$$
 
@@ -120,11 +120,11 @@ The mean and covariance of $\mathbf{y}$ may be evaluated as
 
 $$
 \begin{aligned}
-\operatorname{E}[\mathbf{y}] & = \mathbf{L} \operatorname{E}[\mathbf{x}] + \mathbf{\mu} = \mathbf{\mu} \\
-\operatorname{Cov}[\mathbf{y}] = \operatorname{E}[ (\mathbf{y} - \operatorname{E}[\mathbf{y}]) (\mathbf{y} - \operatorname{E}[\mathbf{y}])^T ]
-& = \operatorname{E}[ (\mathbf{L} \mathbf{x})(\mathbf{L} \mathbf{x})^T]
-= \operatorname{E}[ \mathbf{L} \mathbf{x} \mathbf{x}^T \mathbf{L}^T ]
-= \mathbf{L} \operatorname{E}[ \mathbf{x} \mathbf{x}^T ] \mathbf{L}^T
+\mathbb{E}[\mathbf{y}] & = \mathbf{L} \mathbb{E}[\mathbf{x}] + \mathbf{\mu} = \mathbf{\mu} \\
+\text{Cov}[\mathbf{y}] = \mathbb{E}[ (\mathbf{y} - \mathbb{E}[\mathbf{y}]) (\mathbf{y} - \mathbb{E}[\mathbf{y}])^T ]
+& = \mathbb{E}[ (\mathbf{L} \mathbf{x})(\mathbf{L} \mathbf{x})^T]
+= \mathbb{E}[ \mathbf{L} \mathbf{x} \mathbf{x}^T \mathbf{L}^T ]
+= \mathbf{L} \mathbb{E}[ \mathbf{x} \mathbf{x}^T ] \mathbf{L}^T
 = \mathbf{L} \mathbf{I}_d \mathbf{L}^T = \mathbf{\Sigma}.
 \end{aligned}
 $$
