@@ -109,7 +109,7 @@ To recap, the two steps included in EM algorithm are
 $$
 \begin{align*}
 \text{E-step}: Q(\theta \lvert \theta^{t}) &= \mathbb{E}_{p(z \lvert x, \theta^{t})} [\log p(x, z \lvert \theta)] \\
-\text{M-step}: \theta^{t+1} &= \mathop{\mathrm{argmax}}} Q(\theta \lvert \theta^{t})
+\text{M-step}: \theta^{t+1} &= \mathop{\mathrm{argmax}} Q(\theta \lvert \theta^{t})
 \end{align*}
 $$
 
