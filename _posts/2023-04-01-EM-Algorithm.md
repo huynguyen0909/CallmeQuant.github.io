@@ -78,14 +78,14 @@ $$
 \log p(X \lvert \theta) - \mathbb{E}_{q(Z)} \log \frac{p(X, Z \lvert \theta)}{q(Z)} \\ 
 &=\mathbb{E}_{q(T)} \log \frac{p(X \lvert \theta) q(Z)}{p(X, Z \lvert \theta)} \\ 
 &= \mathbb{E}_{q(Z)} \log \frac{q(Z)}{p(Z \lvert X, \theta)} \\ 
-&= \mathrm{KL}(q(Z) \mid\mid p(Z \lvert X, \theta)).
+&= \mathrm{KL}(q(Z) \lvert \lvert p(Z \lvert X, \theta)).
 \tag{6}
 \end{align*}
 $$
 
 Surprisingly, the difference between $\log p(X \lvert \theta)$ and $\mathcal{L}(\theta, q)$ is the Kullback-Leibler (KL) divergence between the density $q(Z)$ and the true posterior over the latent variables. Since the KL divergence is always non-negative, setting the $q(Z)$ ideally to be $p(Z \lvert X, \theta)$ will make this KL divergence equals to zero and Eq. (5) will be an equality
 
-$$\log p(X \mid \theta) = \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(X, Z \lvert \theta)] - \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(Z \lvert X, \theta)].$$
+$$\log p(X \lvert \theta) = \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(X, Z \lvert \theta)] - \mathbb{E}_{p(Z \lvert X, \theta)} [\log p(Z \lvert X, \theta)].$$
 
 At this step, we have all the ingredients for the construction of EM algorithm. , Keep in mind that since we can not use the complete-data log likelihood, we consider the expected value under the posterior of the latent variables which we can access from our knowledge about these hidden variables. Furthermore, we will introduce some indices to denote the evolution of the algorithm due to its iterative behaviour.
 
