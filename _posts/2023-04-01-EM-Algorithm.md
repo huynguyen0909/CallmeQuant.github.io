@@ -24,7 +24,7 @@ containing latent variables. Consider a probabilistic model settings in which th
 and all latent variables by $Z$ with $\lbrace z_1, z_2, \dots, z_N \rbrace$. The parameters of the model are succintly denoted by $\theta$. To perform maximum likelihood inference, we need to derive the (log) likelihood $\log p(X \lvert \theta)$. However, since our data generating process comprises some latent variables $Z$, we have to include them in our log likelihood function (although we have not truly observed them). It can be done through marginalizing these variables out
 
 $$
-\log p(X \mid \theta) = \sum_{Z} \operatorname{log} p(X, Z \lvert \theta). \tag{1}
+\log p(X \mid \theta) = \sum_{Z} \log p(X, Z \lvert \theta). \tag{1}
 $$
 
 The issue related to Eq. (1) is the intractability as the number of values that our hidden variables can take increases. For example, suppose the *Gaussian Mixture Model* (GMM) with $N$ observations whose the latent variables - the number of clusters can take on one of values from $M$ clusers. This results in $M^N$ terms in Eq. (1). 
