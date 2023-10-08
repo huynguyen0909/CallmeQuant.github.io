@@ -11,14 +11,26 @@ tags:
 ---
 
 In this post, I will provide the Bayesian inference for one of the most 
-fundamental and widely used models, the Normal models. The Gaussian distribution is 
+fundamental and widely used models, the **normal** models. The Gaussian distribution is 
 pivotal to a majority of statistical modeling and estimating its parameters
 is a common task in Bayesian framework. I will derive results for three important 
 cases: estimating the mean $\mu$ with known variance $\sigma^2$, estimating 
 the variance $\sigma^2$ given a known $\mu$, and estimating both $\mu$ and $\sigma^2$.
 The first two cases are single-parameter problem, while the last one is multiparameter one.
 Furthermore, I will derive the likelihood, the *conjugate* prior, and the posterior of 
-three cases.
+three cases. However, before we moving to the main part, I want to revise some helpful and special 
+properties of the (multivariate) normal distribution. 
+
+# Properties of Multivariate Normal Distribution (MVN)
+The multivariate normal random variables has the following density function 
+
+$$ p(x; \mu, \Sigma) = \frac{1}{(2 \pi)^{n/2} |\Sigma|^{1/2}} \exp{\Big(-\frac{1}{2} (x - \mu)^{\intercal} \Sigma^{-1} (x - \mu) \Big)}$$
+with the following log density expression
+
+$$\log p(x; \mu, \Sigma) = -\frac{d}{2} \log(2 \pi) -\frac{1}{2} \log  \det \mathbf{\Sigma}  - \frac{1}{2} (\mathbf{x}-\mathbf{\mu})^\intercal \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu})
+
+
+
 
 # Inference normal distribution with known variance
 
