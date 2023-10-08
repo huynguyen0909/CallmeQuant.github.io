@@ -24,10 +24,20 @@ properties of the (multivariate) normal distribution.
 # Properties of Multivariate Normal Distribution (MVN)
 The multivariate normal random variables has the following density function 
 
-$$ p(x; \mu, \Sigma) = \frac{1}{(2 \pi)^{n/2} |\Sigma|^{1/2}} \exp{\Big(-\frac{1}{2} (x - \mu)^{\intercal} \Sigma^{-1} (x - \mu) \Big)}$$
+$$p(x; \mu, \Sigma) = \frac{1}{(2 \pi)^{n/2} |\Sigma|^{1/2}} \exp{\Big(-\frac{1}{2} (x - \mu)^{\intercal} \Sigma^{-1} (x - \mu) \Big)}$$
 with the following log density expression
 
-$$\log p(x; \mu, \Sigma) = -\frac{d}{2} \log(2 \pi) -\frac{1}{2} \log  \det \mathbf{\Sigma}  - \frac{1}{2} (\mathbf{x}-\mathbf{\mu})^\intercal \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu})
+$$\log p(x; \mu, \Sigma) = -\frac{n}{2} \log(2 \pi) -\frac{1}{2} \log  (\det \mathbf{\Sigma})  - \frac{1}{2} (\mathbf{x}-\mathbf{\mu})^\intercal \mathbf{\Sigma}^{-1} (\mathbf{x}-\mathbf{\mu})$$
+
+with $x, \mu \in \mathbb{R}^{n}, \Sigma \in \mathbb{R}^{n \times n}$, and $\Sigma$ must be *symmetric positive definite* (SPD).
+
+Gaussians possess many interesting and remarkable properties that leverage modeling assumptions in a bunch of applications. Here I will list some of these that are most useful
+
+**1. Product of Gaussian are Gaussian**
+
+
+
+
 
 
 
