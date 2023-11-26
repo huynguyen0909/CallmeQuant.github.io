@@ -58,11 +58,19 @@ $$
 \begin{align*}
 \ln p(y, z) & = \ln p(y \lvert z) + \ln p(z) \\
             & = -\frac{1}{2} (x - \mu)^{\intercal} \Sigma^{-1} (x - \mu) \\
-            &   - \frac{1}{2}(y - Wz - b)^{\intercal} \Omega^{-1} (y - Wz - b) + \text{const} (\ast)
+            &   - \frac{1}{2}(y - Wz - b)^{\intercal} \Omega^{-1} (y - Wz - b) + \text{const} \quad (\ast)
 \end{align*}
 $$
 
 Now we will expand the log of joint distribution and isolate the second order terms and the first order term to determine the covariance matrix and the mean vector:
+
+$$
+\begin{align*}
+(\ast) &= -frac{1}{2} \left( z^{\intercal} \Sigma^{-1} z - 2 z^{\intercal} \Sigma^{-1} \mu + \mu^\intercal \Sigma^{-1} \mu + y^\intercal \Omega^{-1} y \\
+& - \underbrace{y^\intercal \Omega^{-1} (Wz + b)}_{y^\intercal \Omega^{-1} Wz + y^\intercal \Omega^{-1} b} \\
+& - \underbrace{(Wz + b)^\intercal \Omega^{-1} y}_{z^\intercal W^\intercal \Omega^{-1} y + b^\intercal \Omega^{-1} y} + \text{const} 
+\end{align*}
+$$
 
 
 
