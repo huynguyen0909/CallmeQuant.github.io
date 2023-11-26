@@ -58,7 +58,7 @@ $$
 \begin{align*}
 \ln p(y, z) & = \ln p(y \lvert z) + \ln p(z) \\
             & = -\frac{1}{2} (x - \mu)^{\intercal} \Sigma^{-1} (x - \mu) \\
-                - \frac{1}{2}(y - Wz - b)^{\intercal} \Omega^{-1} (y - Wz - b) + \text{const}
+            &&   - \frac{1}{2}(y - Wz - b)^{\intercal} \Omega^{-1} (y - Wz - b) + \text{const}
 \end{align*}
 $$
 
