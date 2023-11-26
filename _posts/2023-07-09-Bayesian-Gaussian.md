@@ -66,7 +66,7 @@ Now we will expand the log of joint distribution and isolate the second order te
 
 $$
 \begin{align*}
-(\ast) & = -frac{1}{2} \left( z^{\intercal} \Sigma^{-1} z - 2 z^{\intercal} \Sigma^{-1} \mu + \mu^\intercal \Sigma^{-1} \mu + y^\intercal \Omega^{-1} y \\
+(\ast) & = -frac{1}{2} \left( z^{\intercal} \Sigma^{-1} z - 2 z^{\intercal} \Sigma^{-1} \mu + \mu^\intercal \Sigma^{-1} \mu + y^\intercal \Omega^{-1} y text{const} 
 \end{align*}
 $$
 
