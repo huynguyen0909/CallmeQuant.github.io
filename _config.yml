@@ -18,9 +18,9 @@ remote_theme: "mmistakes/minimal-mistakes@4.19.3"
 minimal_mistakes_skin: "default"
 minimal_mistakes_skin2: "dark"
 
-title: "Binh Ho"
+title: "Nguyen Tran Gia Huy"
 subtitle: ""
-personal email: binhho660@gmail.com
+personal email: nguyentrangiahuy0909@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Hey there! My name is Binh, and I'm an undergraduate at Internation University under VietNam National University.
 words_per_minute: 200
@@ -28,7 +28,7 @@ search: true
 search_full_content: true
 
 # twitter_username: username
-github_username: CallmeQuant
+github_username: huynguyen0909
 
 # Build settings
 markdown: kramdown
