@@ -34,6 +34,7 @@ with $x, \mu \in \mathbb{R}^{n}, \Sigma \in \mathbb{R}^{n \times n}$, and $\Sigm
 Gaussians possess many interesting and remarkable properties that leverage modeling assumptions in a bunch of applications. Here I will list some of these that are most useful
 
 **1. Product of Gaussian are Gaussian**
+
 Let's me clarify this. The product of two Gaussian probability density functions (p.d.fs) will result in another Gaussian p.d.f. One example that arises frequently in statistics and machine learning is the *linear Gaussian model* which we have a Gaussian marginal distribution $p(z)$ and a Gaussian conditional distribution $p(y \lvert z)$ which has a linear function of $z$ as mean. These two density function jointly create a Gaussian distribution. We will state it more clearly as follows.
 
 Assume that $p(z) = \mathcal{N}(z \lvert \mu, \Sigma)$ and $p(y \lvert z) = \mathcal{N}(y \lvert Wz + b, \Omega)$ where $y \in \mathbb{R}^{D}$, $z \in \mathbb{R}^{L}$, and $\Omega$ is a $D \times L$ matrix. Then, the joint distribution of $y$ and $z$ is a Gaussian distribution, i.e., $p(z, y) = p(y \lvert z) p(z) = \mathcal{N}(\tilde{\mu}, \tilde{\Sigma})$ with mean $\tilde{\mu}$ and covariance $\tilde{\Sigma}$ being expressed as
@@ -50,6 +51,18 @@ W\Sigma & W \Sigma W^{\intercal} + \Omega
 \end{pmatrix}
 \end{align*}
 $$
+**Proof.**
+We will working with the log of distribution to get rid of the cumbersome of exponential notation. Consider the log of the joint distribution 
+
+$$
+\begin{align*}
+\ln p(y, z) & = \ln p(y \lvert z) + \ln p(z) \\
+            & = \begin{split} & -\frac{1}{2} (x - \mu)^{\intercal} \Sigma^{-1} (x - \mu) \\
+                - & \frac{1}{2}(y - Wz - b)^{\intercal} \Omega^{-1} (y - Wz - b) + \text{const}
+                \end{split}
+\end{align*}
+$$
+
 
 
 
