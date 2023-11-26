@@ -65,7 +65,9 @@ $$
 Now we will expand the log of joint distribution and isolate the second order terms and the first order term to determine the covariance matrix and the mean vector:
 $$
 \begin{align*}
-(\ast) & = -\frac{1}{2} \left( z^{\intercal} \Sigma^{-1} z - 2 z^{\intercal} \Sigma^{-1} \mu + \mu^{\intercal} \Sigma^{-1} \mu + y^{\intercal} \Omega^{-1} y  \right)
+(\ast) & = -\frac{1}{2} \left( z^{\intercal} \Sigma^{-1} z - 2 z^{\intercal} \Sigma^{-1} \mu + \mu^\intercal \Sigma^{-1} \mu + y^\intercal \Omega^{-1} y + \text{const} \\
+& - \underbrace{y^\intercal \Omega^{-1} (Wz + b)}_{\substack{y^\intercal \Omega^{-1} Wz \\ + y^\intercal \Omega^{-1} b}} \\
+& -\underbrace{(Wz + b)^\intercal \Omega^{-1} y}_{\substack{z^\intercal W^\intercal \Omega^{-1} y \\ + b^\intercal \Omega^{-1} y}} \right)
 \end{align*}
 $$
 
