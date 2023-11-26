@@ -43,7 +43,7 @@ $$
 \tilde{\mu} &= \begin{bmatrix}
                 \mu \\
                 W\mu + b
-                \end{pmatrix} \\
+                \end{bmatrix} \\
 \tilde{\Sigma} &= \begin{bmatrix}
 \Sigma & W\Sigma^{\intercal} \\
 W\Sigma & W\SigmaW^{\intercal} + \Omega
