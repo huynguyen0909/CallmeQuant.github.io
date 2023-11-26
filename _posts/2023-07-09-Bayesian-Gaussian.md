@@ -40,14 +40,14 @@ Assume that $p(z) = \mathcal{N}(z \lvert \mu, \Sigma)$ and $p(y \lvert z) = \mat
 
 $$
 \begin{align*}
-\tilde{\mu} &= \begin{bmatrix}
+\tilde{\mu} &= \begin{pmatrix}
                 \mu \\
                 W\mu + b
-                \end{bmatrix} \\
-\tilde{\Sigma} &= \begin{bmatrix}
+                \end{pmatrix} \\
+\tilde{\Sigma} &= \begin{pmatrix}
 \Sigma & W\Sigma^{\intercal} \\
-W\Sigma & W\SigmaW^{\intercal} + \Omega
-\end{bmatrix}
+W\Sigma & W \Sigma W^{\intercal} + \Omega
+\end{pmatrix}
 \end{align*}
 $$
 
