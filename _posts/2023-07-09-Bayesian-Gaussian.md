@@ -64,11 +64,13 @@ $$
 
 Now we will expand the log of joint distribution and isolate the second order terms and the first order term to determine the covariance matrix and the mean vector:
 
+$$
 \begin{multline*}
 (\ast) = -\frac{1}{2}  \bigl( z^{\intercal} \Sigma^{-1} z - 2 z^{\intercal} \Sigma^{-1} \mu + \mu^\intercal \Sigma^{-1} \mu + y^\intercal \Omega^{-1} y \\
 {} -\underbrace{y^\intercal \Omega^{-1} (Wz + b)}_{y^\intercal \Omega^{-1} Wz + y^\intercal \Omega^{-1} b} 
 -\underbrace{(Wz + b)^\intercal \Omega^{-1} y}_{z^\intercal W^\intercal \Omega^{-1} y + b^\intercal \Omega^{-1} y} + \text{const} \bigr) \\
 \end{multline*}
+$$
 
 
 
